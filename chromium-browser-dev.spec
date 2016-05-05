@@ -14,7 +14,7 @@
 %define    google_default_client_id 1089316189405-m0ropn3qa4p1phesfvi2urs7qps1d79o.apps.googleusercontent.com
 %define    google_default_client_secret RDdr-pHq2gStY4uw0m-zxXeo
 
-%bcond_with	plf
+%bcond_without	plf
 # Always support proprietary codecs
 # or html5 does not work
 %if %{with plf}
