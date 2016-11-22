@@ -1,5 +1,25 @@
---- chromium-44.0.2376.0/ui/base/resource/data_pack.cc.0017~	2015-04-21 05:08:12.000000000 +0200
-+++ chromium-44.0.2376.0/ui/base/resource/data_pack.cc	2015-04-24 16:59:01.402028898 +0200
+--- a/third_party/webrtc/modules/audio_coding/codecs/isac/isacfix.gypi
++++ b/third_party/webrtc/modules/audio_coding/codecs/isac/isacfix.gypi
+@@ -80,7 +80,7 @@
+             'WEBRTC_LINUX',
+           ],
+         }],
+-        ['target_arch=="arm" and arm_version>=7', {
++        ['target_arch=="arm" and arm_version>=7 and arm_neon==1', {
+           'sources': [
+             'fix/source/lattice_armv7.S',
+             'fix/source/pitch_filter_armv6.S',
+@@ -124,7 +124,7 @@
+     },
+   ],
+   'conditions': [
+-    ['target_arch=="arm" and arm_version>=7 or target_arch=="arm64"', {
++    ['target_arch=="arm" and arm_version>=7 and arm_neon==1 or target_arch=="arm64"', {
+       'targets': [
+         {
+           'target_name': 'isac_neon',
+--- a/ui/base/resource/data_pack.cc
++++ b/ui/base/resource/data_pack.cc
 @@ -155,9 +155,11 @@ bool DataPack::LoadImpl() {
    // 2) Verify the entries are within the appropriate bounds. There's an extra
    // entry after the last item which gives us the length of the last item.
