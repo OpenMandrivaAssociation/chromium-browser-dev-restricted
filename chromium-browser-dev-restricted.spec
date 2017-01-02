@@ -7,7 +7,7 @@
 %define _src %{_topdir}/SOURCES
 # Valid current basever numbers can be found at
 # http://omahaproxy.appspot.com/
-%define basever 56.0.2922.1
+%define basever 57.0.2950.4
 %define	debug_package %nil
 
 %ifarch %ix86
@@ -49,6 +49,7 @@ Patch0:         chromium-30.0.1599.66-master-prefs-path.patch
 # Don't use clang's integrated as while trying to check the version of gas
 #Patch4:		chromium-36.0.1985.143-clang-no-integrated-as.patch
 %endif
+Patch5:		chromium-57.0.2950.4-use_system_harfbuzz-buildfix.patch
 
 Patch20:	chromium-last-commit-position-r0.patch
 
@@ -204,7 +205,7 @@ myconf_gn+=" is_clang=true clang_base_path=\"%{_prefix}\" clang_use_chrome_plugi
 myconf_gn+=" treat_warnings_as_errors=false"
 myconf_gn+=" use_system_libjpeg=true "
 %if %mdvver >= 201500
-#myconf_gn+=" use_system_harfbuzz=true "
+myconf_gn+=" use_system_harfbuzz=true "
 %endif
 myconf_gn+=" use_gnome_keyring=false "
 myconf_gn+=" fatal_linker_warnings=false "

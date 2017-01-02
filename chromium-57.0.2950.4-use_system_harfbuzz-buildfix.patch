@@ -1,0 +1,26 @@
+--- chromium-57.0.2950.4/chrome/browser/ui/libgtkui/BUILD.gn.omv~	2017-01-01 16:07:50.138717945 +0100
++++ chromium-57.0.2950.4/chrome/browser/ui/libgtkui/BUILD.gn	2017-01-01 16:09:02.920095599 +0100
+@@ -138,7 +138,9 @@ component("libgtk2ui") {
+   # some hack is required when bundled harfbuzz is used and component build is
+   # disabled.
+   # See crbug.com/462689 for details.
+-  all_dependent_configs = [ "//third_party/harfbuzz-ng:pangoft2_link_hack" ]
++  if(false) {
++    all_dependent_configs = [ "//third_party/harfbuzz-ng:pangoft2_link_hack" ]
++  }
+ 
+   deps = common_deps + [
+            "//build/config/linux/gtk2",
+--- chromium-57.0.2950.4/remoting/host/it2me/BUILD.gn.omv~	2017-01-01 16:09:39.097267622 +0100
++++ chromium-57.0.2950.4/remoting/host/it2me/BUILD.gn	2017-01-01 16:09:59.299359518 +0100
+@@ -57,7 +57,9 @@ source_set("common") {
+     # some hack is required when bundled harfbuzz is used and component build is
+     # disabled.
+     # See crbug.com/462689 for details.
+-    all_dependent_configs = [ "//third_party/harfbuzz-ng:pangoft2_link_hack" ]
++    if (false) {
++      all_dependent_configs = [ "//third_party/harfbuzz-ng:pangoft2_link_hack" ]
++    }
+     deps += [ "//build/config/linux/gtk" ]
+   }
+ }
